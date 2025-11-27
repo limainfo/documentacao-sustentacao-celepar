@@ -1,6 +1,56 @@
 # Passo a passo: Integração do projeto **garh** com o SonarQube
 
 ## 1. Criar o projeto no SonarQube
+```yaml
+version: "3.8"
+
+services:
+  sonarqube-db:
+    image: postgres:14-alpine
+    container_name: sonarqube-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: sonar
+      POSTGRES_PASSWORD: sonar
+      POSTGRES_DB: sonarqube
+    volumes:
+      - postgresql_data:/var/lib/postgresql/data
+    networks:
+      - sonarnet
+
+  sonarqube:
+    image: sonarqube:latest
+    container_name: sonarqube
+    restart: unless-stopped
+    ports:
+      - "9000:9000"
+    environment:
+      SONAR_JDBC_URL: jdbc:postgresql://sonarqube-db:5432/sonarqube
+      SONAR_JDBC_USERNAME: sonar
+      SONAR_JDBC_PASSWORD: sonar
+      SONAR_ES_BOOTSTRAP_CHECKS_DISABLE: "true"
+    volumes:
+      - sonarqube_data:/opt/sonarqube/data
+      - sonarqube_logs:/opt/sonarqube/logs
+      - sonarqube_extensions:/opt/sonarqube/extensions
+    networks:
+      - sonarnet
+    depends_on:
+      - sonarqube-db
+
+volumes:
+  postgresql_data:
+  sonarqube_data:
+  sonarqube_logs:
+  sonarqube_extensions:
+
+networks:
+  sonarnet:
+    driver: bridge
+```
+```cmd
+docker compose up -d
+```
 
 1. Acesse: `http://localhost:9000/projects`
 2. Clique em **Create Project**.
@@ -89,7 +139,7 @@ C:\Program Files\apache-maven-3.9.8\bin\mvn
 3. Execute o comando abaixo (ajuste o token, se necessário):
 
    ```cmd
-   mvn clean verify sonar:sonar   -Dsonar.projectKey=br.gov.pr.celepar:garh  -Dsonar.projectName=garh   -Dsonar.host.url=http://localhost:9000   -Dsonar.token=sqp_988fd17fa0fb62e5c03cf9aaa44a2df84d35390b
+   mvn clean verify sonar:sonar   -Dsonar.projectKey=br.gov.pr.celepar:garh  -Dsonar.projectName=garh   -Dsonar.host.url=http://localhost:9000   -Dsonar.token=sqp_TOKENID
    ```
 
 4. Ao final da execução, o Maven exibirá uma URL com o resultado da análise.
