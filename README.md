@@ -140,6 +140,128 @@ Quando necessário:
 Este repositório é um ponto de partida profissional, padronizado e alinhado ao PDS-CELEPAR.
 
 ---
+
+# 6. Automação da Criação de Estruturas por Ticket
+
+Para agilizar o processo de abertura de demandas, este repositório inclui **três scripts automatizados** (PowerShell, Linux/macOS shell e Windows .cmd) responsáveis por:
+
+* Criar a pasta do ticket em `sustentacao/`
+* Copiar automaticamente todos os templates da pasta `docs/`
+* Renomear cada arquivo, substituindo o prefixo padrão **`MANTIS-1234`** por
+  **`MANTIS-<NÚMERO_DO_TICKET>`**
+* Garantir o padrão:
+
+  ```
+  MANTIS-9999-<descricao>/MANTIS-9999-01-revisao-requisitos.odt
+  ```
+
+---
+
+## ✔ Uso — Parâmetros
+
+Os três scripts aceitam **exatamente dois argumentos**:
+
+| Parâmetro            | Exemplo           | Descrição                                                       |
+| -------------------- | ----------------- | --------------------------------------------------------------- |
+| **Número do Ticket** | `5678`            | Apenas o número; o prefixo `MANTIS-` é incluído automaticamente |
+| **Descrição**        | `correcao-erro-x` | Texto curto, em *kebab-case*, definindo o contexto do ticket    |
+
+### Estrutura final criada:
+
+```
+sustentacao/
+└─ MANTIS-5678-correcao-erro-x/
+    ├─ MANTIS-5678-01-revisao-requisitos.odt
+    ├─ MANTIS-5678-01-complemento-pre-projeto.odt
+    ├─ MANTIS-5678-01-complemento-contagem-indicativa.ods
+    ├─ MANTIS-5678-01-complemento-contagem-projeto.ods
+    ├─ MANTIS-5678-02-solicitacao-mudanca.odt
+    ├─ MANTIS-5678-02-complemento-lista-requisitos.odt
+    ├─ MANTIS-5678-03-caso-uso.odt
+    ├─ MANTIS-5678-04-plano-testes.odt
+    ├─ MANTIS-5678-05-casos-teste.odt
+    └─ MANTIS-5678-evidencias/
+```
+
+---
+
+## ▶ **PowerShell (Windows)**
+
+Arquivo: `criar-ticket.ps1`
+
+### **Exemplo de uso:**
+
+```powershell
+.\criar-ticket.ps1 -Ticket "5678" -Descricao "correcao-erro-x"
+```
+
+### **O script irá:**
+
+* Criar `sustentacao/MANTIS-5678-correcao-erro-x/`
+* Copiar `docs/MANTIS-1234-*`
+* Renomear tudo para `MANTIS-5678-*`
+
+---
+
+## ▶ **Shell Script (Linux/macOS ou Git Bash)**
+
+Arquivo: `criar-ticket.sh`
+
+
+### **Exemplo de uso:**
+
+```bash
+./criar-ticket.sh 5678 correcao-erro-x
+```
+
+### **Requisitos:**
+
+```bash
+chmod +x criar-ticket.sh
+```
+
+---
+
+## ▶ **Batch Script (Windows CMD)**
+
+Arquivo: `criar-ticket.cmd`
+
+### **Exemplo de uso:**
+
+```cmd
+criar-ticket.cmd 5678 correcao-erro-x
+```
+
+---
+
+## ✔ Recomendações de uso
+
+* Use sempre **kebab-case** nas descrições
+  Ex.: `ajuste-tela-informe-fpp`, `corrigir-validacao-cpf`
+* Não utilize espaços na descrição
+* O número do ticket deve ser apenas os dígitos:
+
+  ```
+  1234
+  ```
+
+  O script gera automaticamente:
+
+  ```
+  MANTIS-1234
+  ```
+
+---
+
+## ✔ Benefícios
+
+* Padronização absoluta entre todos os tickets
+* Velocidade na criação dos artefatos
+* Evita erros manuais de renomeação
+* Reduz retrabalho na estrutura de sustentação
+* Facilita organização, auditoria e rastreabilidade
+
+---
 ## **ANEXO – PROCESSO DE ATENDIMENTO DE DEMANDAS**
 ---
 ### **1. PRAZO PARA INÍCIO DO ATENDIMENTO DA DEMANDA (PIAD)**
