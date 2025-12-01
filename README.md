@@ -1,38 +1,143 @@
-# Documentação de Sustentação – Modelo Padrão
+# 📘 Manual de Uso Rápido dos Templates – Sustentação GARH / CELEPAR
 
-Este repositório contém modelos de documentação em **Markdown** para uso em atividades de **sustentação de sistemas**, seguindo boas práticas de grandes empresas de TI e alinhado ao ciclo:
+Este manual explica quando e como usar cada template CELEPAR durante o processo de sustentação do sistema.
 
-> Ticket → Análise → Desenvolvimento → Testes → Entrega
+---
 
-## 📂 Estrutura
+# 1. Visão Geral do Fluxo
 
-- `docs/01-analise-impacto.md`  
-- `docs/02-change-request-historia-usuario.md`  
-- `docs/03-cenarios-teste.md`  
-- `docs/04-massa-dados.md`  
-- `docs/05-diagrama-fluxo.md`  
-- `docs/06-prototipo-tela.md`  
-- `docs/MANUAL-uso-rapido.md`  
+Fluxo típico de sustentação:
 
-## ✅ Como usar
+**Ticket → Análise → Especificação → Desenvolvimento → Testes → Entrega**
 
-1. Ao receber um ticket no Mantis, crie uma pasta ou arquivo por demanda (ex.: `SISXPTO-1234/`).
-2. Copie os templates necessários de `docs/` para a pasta da demanda.
-3. Preencha somente o que for aplicável à solicitação.
-4. Versione as alterações normalmente (Git).
+Abaixo, o mapeamento oficial entre cada fase e os templates CELEPAR, considerando a estrutura real da pasta:
 
-Sugestão de uso por fase:
+| Fase                                  | Template CELEPAR                                                                                                                                                                                 |
+| ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Início da Análise**                 | [`MANTIS-1234-01-revisao-requisitos.odt`](docs/MANTIS-1234-01-revisao-requisitos.odt) <br> *(Se necessário: complementos)*                                                             |
+| **Especificação da Solução**          | [`MANTIS-1234-02-solicitacao-mudanca.odt`](docs/MANTIS-1234-02-solicitacao-mudanca.odt) <br> *(Opcional: [`MANTIS-1234-03-caso-uso.odt`](docs/MANTIS-1234-03-caso-uso.odt))* |
+| **Planejamento dos Testes**           | [`MANTIS-1234-04-plano-testes.odt`](docs/MANTIS-1234-04-plano-testes.odt) + [`MANTIS-1234-05-casos-teste.odt`](docs/MANTIS-1234-05-casos-teste.odt)                          |
+| **Preparação da Massa de Dados**      | Dentro de [`MANTIS-1234-05-casos-teste.odt`](docs/MANTIS-1234-05-casos-teste.odt)                                                                                                      |
+| **Entendimento do Processo / Regras** | [`MANTIS-1234-03-caso-uso.odt`](docs/MANTIS-1234-03-caso-uso.odt)                                                                                                                      |
+| **Mudanças de UI/Tela**               | [`MANTIS-1234-03-caso-uso.odt`](docs/MANTIS-1234-03-caso-uso.odt) (Seção “Protótipos”)                                                                                                 |
 
-- **Início da análise** → `01-analise-impacto.md`
-- **Definição da solução** → `02-change-request-historia-usuario.md`
-- **Preparação de testes** → `03-cenarios-teste.md` + `04-massa-dados.md`
-- **Documentação de fluxo/regra** → `05-diagrama-fluxo.md`
-- **Alterações de tela/UI** → `06-prototipo-tela.md`
+---
 
-Mais detalhes em: `docs/MANUAL-uso-rapido.md`.
+### ✔ Arquivos complementares (usados quando necessário)
 
+| Tipo                            | Arquivo                                                                                                                   |
+| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| Complemento de Pré-Projeto      | [`MANTIS-1234-01-complemento-pre-projeto.odt`](docs/MANTIS-1234-01-complemento-pre-projeto.odt)                 |
+| Contagem Indicativa             | [`MANTIS-1234-01-complemento-contagem-indicativa.ods`](docs/MANTIS-1234-01-complemento-contagem-indicativa.ods) |
+| Contagem do Projeto             | [`MANTIS-1234-01-complemento-contagem-projeto.ods`](docs/MANTIS-1234-01-complemento-contagem-projeto.ods)       |
+| Complemento Lista de Requisitos | [`MANTIS-1234-02-complemento-lista-requisitos.odt`](docs/MANTIS-1234-02-complemento-lista-requisitos.odt)       |
+| Protótipo AXURE                 | [`CELEPAR_AXURE_EXAMPLE.rp`](docs/CELEPAR_AXURE_EXAMPLE.rp)                                                     |
+| Biblioteca AXURE                | [`CELEPAR_AXURE_TEMPLATE.rplib`](docs/CELEPAR_AXURE_TEMPLATE.rplib)                                             |
 
-Perfeito! Segue o texto **formatado de forma técnica, padronizada e pronta para uso em documentação oficial (Markdown ou Word)**:
+Esses arquivos são usados **apenas quando a mudança requer levantamento aprofundado**, não em sustentação simples.
+
+---
+
+# 2. Exemplo de Estrutura por Ticket
+
+Se você receber o ticket **MANTIS-1234**, organize assim:
+
+```
+sustentacao/
+└─ MANTIS-1234-correcao-erro-x/
+   ├─ MANTIS-1234-01-revisao-requisitos.odt
+   ├─ MANTIS-1234-01-complemento-pre-projeto.odt
+   ├─ MANTIS-1234-01-complemento-contagem-indicativa.ods
+   ├─ MANTIS-1234-01-complemento-contagem-projeto.ods
+   ├─ MANTIS-1234-02-solicitacao-mudanca.odt
+   ├─ MANTIS-1234-02-complemento-lista-requisitos.odt
+   ├─ MANTIS-1234-03-caso-uso.odt
+   ├─ MANTIS-1234-04-plano-testes.odt
+   ├─ MANTIS-1234-05-casos-teste.odt
+   ├─ MANTIS-1234-prototipo.rp        (opcional)
+   ├─ MANTIS-1234-biblioteca.rplib    (opcional)
+   └─ MANTIS-1234-evidencias/
+```
+
+---
+
+### Como usar:
+
+* Copie os templates de `docs/`
+* Renomeie usando o número do ticket
+* Inclua complementos somente quando necessário
+* Sempre mantenha clara a relação entre ticket → artefatos
+
+---
+
+# 3. Dicas de Preenchimento
+
+## ✔ Tickets Simples (ex.: ajuste de texto)
+
+Use apenas:
+
+* [`MANTIS-1234-01-revisao-requisitos.odt`](docs/MANTIS-1234-01-revisao-requisitos.odt)
+* [`MANTIS-1234-05-casos-teste.odt`](docs/MANTIS-1234-05-casos-teste.odt)
+
+---
+
+## ✔ Alteração de Regra de Negócio
+
+Inclua:
+
+* [`MANTIS-1234-01-revisao-requisitos.odt`](docs/MANTIS-1234-01-revisao-requisitos.odt)
+* [`MANTIS-1234-02-solicitacao-mudanca.odt`](docs/MANTIS-1234-02-solicitacao-mudanca.odt)
+* [`MANTIS-1234-03-caso-uso.odt`](docs/MANTIS-1234-03-caso-uso.odt)
+* [`MANTIS-1234-05-casos-teste.odt`](docs/MANTIS-1234-05-casos-teste.odt)
+
+Se novos requisitos surgirem:
+
+* [`MANTIS-1234-02-complemento-lista-requisitos.odt`](docs/MANTIS-1234-02-complemento-lista-requisitos.odt)
+
+---
+
+## ✔ Alteração de Tela
+
+Inclua:
+
+* [`MANTIS-1234-03-caso-uso.odt`](docs/MANTIS-1234-03-caso-uso.odt) (protótipos)
+* [`CELEPAR_AXURE_EXAMPLE.rp`](docs/CELEPAR_AXURE_EXAMPLE.rp) — opcional
+
+---
+
+## ✔ Alterações com SQL complexo
+
+Inclua:
+
+* [`MANTIS-1234-05-casos-teste.odt`](docs/MANTIS-1234-05-casos-teste.odt)
+
+Se houver impacto em cálculos:
+
+* [`MANTIS-1234-01-complemento-contagem-projeto.ods`](docs/MANTIS-1234-01-complemento-contagem-projeto.ods)
+* [`MANTIS-1234-01-complemento-contagem-indicativa.ods`](docs/MANTIS-1234-01-complemento-contagem-indicativa.ods)
+
+---
+
+# 4. Boas Práticas
+
+* Sempre cite o número do ticket no topo dos arquivos
+* Utilize linguagem clara e direta
+* Documente decisões importantes
+* Inclua evidências (prints, logs, SQL, data/hora)
+* Versione tudo no Git — **histórico é ouro em sustentação**
+
+---
+
+# 5. Adaptação ao PDS-CELEPAR
+
+Quando necessário:
+
+* Ajuste títulos e numeração conforme padrão CELEPAR
+* Insira logotipo institucional quando requerido
+* Utilize códigos internos (ex.: ANL-001, SOL-002…)
+* Arquivos “complemento” seguem ordem e nomenclatura do PDS
+
+Este repositório é um ponto de partida profissional, padronizado e alinhado ao PDS-CELEPAR.
 
 ---
 ## **ANEXO – PROCESSO DE ATENDIMENTO DE DEMANDAS**
@@ -64,4 +169,3 @@ Este prazo poderá ser negociado entre as partes, prevalecendo, em caso de diver
 | **02** | Um problema que tenha um impacto na capacidade da CONTRATANTE em manter o sistema ativo, cuja severidade seja significativa, porém não crítica, que possa ser de natureza repetitiva. O funcionamento do sistema é afetado, mas o desempenho não foi severamente degradado. | Em até **2 horas** corridas após o registro da demanda | Em até **8 horas** corridas após o registro da demanda |
 | **03** | Um problema pontual que não cause impacto na capacidade operacional da CONTRATANTE em manter o sistema ativo. Ex.: Uma funcionalidade apresentando defeito em situações específicas, limitando seu uso. | Em até **4 horas** corridas após o registro da demanda | Em até **24 horas** corridas após o registro da demanda |
 | **04** | Um problema que não afeta o desempenho e/ou disponibilidade dos sistemas usados eventualmente ou temporariamente. | Em até **8 horas** corridas após o registro da demanda | Em até **36 horas** corridas após o registro da demanda |
-
