@@ -14,12 +14,12 @@ Abaixo, o mapeamento oficial entre cada fase e os templates CELEPAR, considerand
 
 | Fase                                  | Template CELEPAR                                                                                                                                                                                 |
 | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **Início da Análise**                 | [`MANTIS-1234-01-revisao-requisitos.odt`](docs/MANTIS-1234-01-revisao-requisitos.odt) <br> *(Se necessário: complementos)*                                                             |
-| **Especificação da Solução**          | [`MANTIS-1234-02-solicitacao-mudanca.odt`](docs/MANTIS-1234-02-solicitacao-mudanca.odt) <br> *(Opcional: [`MANTIS-1234-03-caso-uso.odt`](docs/MANTIS-1234-03-caso-uso.odt))* |
-| **Planejamento dos Testes**           | [`MANTIS-1234-04-plano-testes.odt`](docs/MANTIS-1234-04-plano-testes.odt) + [`MANTIS-1234-05-casos-teste.odt`](docs/MANTIS-1234-05-casos-teste.odt)                          |
-| **Preparação da Massa de Dados**      | Dentro de [`MANTIS-1234-05-casos-teste.odt`](docs/MANTIS-1234-05-casos-teste.odt)                                                                                                      |
-| **Entendimento do Processo / Regras** | [`MANTIS-1234-03-caso-uso.odt`](docs/MANTIS-1234-03-caso-uso.odt)                                                                                                                      |
-| **Mudanças de UI/Tela**               | [`MANTIS-1234-03-caso-uso.odt`](docs/MANTIS-1234-03-caso-uso.odt) (Seção “Protótipos”)                                                                                                 |
+| **Início da Análise**                 | [`MANTIS-1234-01-revisao-requisitos.odt`](docs/MANTIS-1234-01-revisao-requisitos.odt?raw=1) <br> *(Se necessário: complementos)*                                                             |
+| **Especificação da Solução**          | [`MANTIS-1234-02-solicitacao-mudanca.odt`](docs/MANTIS-1234-02-solicitacao-mudanca.odt?raw=1) <br> *(Opcional: [`MANTIS-1234-03-caso-uso.odt`](docs/MANTIS-1234-03-caso-uso.odt?raw=1))* |
+| **Planejamento dos Testes**           | [`MANTIS-1234-04-plano-testes.odt`](docs/MANTIS-1234-04-plano-testes.odt?raw=1) + [`MANTIS-1234-05-casos-teste.odt`](docs/MANTIS-1234-05-casos-teste.odt?raw=1)                          |
+| **Preparação da Massa de Dados**      | Dentro de [`MANTIS-1234-05-casos-teste.odt`](docs/MANTIS-1234-05-casos-teste.odt?raw=1)                                                                                                      |
+| **Entendimento do Processo / Regras** | [`MANTIS-1234-03-caso-uso.odt`](docs/MANTIS-1234-03-caso-uso.odt?raw=1)                                                                                                                      |
+| **Mudanças de UI/Tela**               | [`MANTIS-1234-03-caso-uso.odt`](docs/MANTIS-1234-03-caso-uso.odt?raw=1) (Seção “Protótipos”)                                                                                                 |
 
 ---
 
@@ -27,12 +27,12 @@ Abaixo, o mapeamento oficial entre cada fase e os templates CELEPAR, considerand
 
 | Tipo                            | Arquivo                                                                                                                   |
 | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| Complemento de Pré-Projeto      | [`MANTIS-1234-01-complemento-pre-projeto.odt`](docs/MANTIS-1234-01-complemento-pre-projeto.odt)                 |
-| Contagem Indicativa             | [`MANTIS-1234-01-complemento-contagem-indicativa.ods`](docs/MANTIS-1234-01-complemento-contagem-indicativa.ods) |
-| Contagem do Projeto             | [`MANTIS-1234-01-complemento-contagem-projeto.ods`](docs/MANTIS-1234-01-complemento-contagem-projeto.ods)       |
-| Complemento Lista de Requisitos | [`MANTIS-1234-02-complemento-lista-requisitos.odt`](docs/MANTIS-1234-02-complemento-lista-requisitos.odt)       |
-| Protótipo AXURE                 | [`CELEPAR_AXURE_EXAMPLE.rp`](docs/CELEPAR_AXURE_EXAMPLE.rp)                                                     |
-| Biblioteca AXURE                | [`CELEPAR_AXURE_TEMPLATE.rplib`](docs/CELEPAR_AXURE_TEMPLATE.rplib)                                             |
+| Complemento de Pré-Projeto      | [`MANTIS-1234-01-complemento-pre-projeto.odt`](docs/MANTIS-1234-01-complemento-pre-projeto.odt?raw=1)                 |
+| Contagem Indicativa             | [`MANTIS-1234-01-complemento-contagem-indicativa.ods`](docs/MANTIS-1234-01-complemento-contagem-indicativa.ods?raw=1) |
+| Contagem do Projeto             | [`MANTIS-1234-01-complemento-contagem-projeto.ods`](docs/MANTIS-1234-01-complemento-contagem-projeto.ods?raw=1)       |
+| Complemento Lista de Requisitos | [`MANTIS-1234-02-complemento-lista-requisitos.odt`](docs/MANTIS-1234-02-complemento-lista-requisitos.odt?raw=1)       |
+| Protótipo AXURE                 | [`CELEPAR_AXURE_EXAMPLE.rp`](docs/CELEPAR_AXURE_EXAMPLE.rp?raw=1)                                                     |
+| Biblioteca AXURE                | [`CELEPAR_AXURE_TEMPLATE.rplib`](docs/CELEPAR_AXURE_TEMPLATE.rplib?raw=1)                                             |
 
 Esses arquivos são usados **apenas quando a mudança requer levantamento aprofundado**, não em sustentação simples.
 
@@ -76,8 +76,8 @@ sustentacao/
 
 Use apenas:
 
-* [`MANTIS-1234-01-revisao-requisitos.odt`](docs/MANTIS-1234-01-revisao-requisitos.odt)
-* [`MANTIS-1234-05-casos-teste.odt`](docs/MANTIS-1234-05-casos-teste.odt)
+* [`MANTIS-1234-01-revisao-requisitos.odt`](docs/MANTIS-1234-01-revisao-requisitos.odt?raw=1)
+* [`MANTIS-1234-05-casos-teste.odt`](docs/MANTIS-1234-05-casos-teste.odt?raw=1)
 
 ---
 
@@ -85,14 +85,14 @@ Use apenas:
 
 Inclua:
 
-* [`MANTIS-1234-01-revisao-requisitos.odt`](docs/MANTIS-1234-01-revisao-requisitos.odt)
-* [`MANTIS-1234-02-solicitacao-mudanca.odt`](docs/MANTIS-1234-02-solicitacao-mudanca.odt)
-* [`MANTIS-1234-03-caso-uso.odt`](docs/MANTIS-1234-03-caso-uso.odt)
-* [`MANTIS-1234-05-casos-teste.odt`](docs/MANTIS-1234-05-casos-teste.odt)
+* [`MANTIS-1234-01-revisao-requisitos.odt`](docs/MANTIS-1234-01-revisao-requisitos.odt?raw=1)
+* [`MANTIS-1234-02-solicitacao-mudanca.odt`](docs/MANTIS-1234-02-solicitacao-mudanca.odt?raw=1)
+* [`MANTIS-1234-03-caso-uso.odt`](docs/MANTIS-1234-03-caso-uso.odt?raw=1)
+* [`MANTIS-1234-05-casos-teste.odt`](docs/MANTIS-1234-05-casos-teste.odt?raw=1)
 
 Se novos requisitos surgirem:
 
-* [`MANTIS-1234-02-complemento-lista-requisitos.odt`](docs/MANTIS-1234-02-complemento-lista-requisitos.odt)
+* [`MANTIS-1234-02-complemento-lista-requisitos.odt`](docs/MANTIS-1234-02-complemento-lista-requisitos.odt?raw=1)
 
 ---
 
@@ -100,8 +100,8 @@ Se novos requisitos surgirem:
 
 Inclua:
 
-* [`MANTIS-1234-03-caso-uso.odt`](docs/MANTIS-1234-03-caso-uso.odt) (protótipos)
-* [`CELEPAR_AXURE_EXAMPLE.rp`](docs/CELEPAR_AXURE_EXAMPLE.rp) — opcional
+* [`MANTIS-1234-03-caso-uso.odt`](docs/MANTIS-1234-03-caso-uso.odt?raw=1) (protótipos)
+* [`CELEPAR_AXURE_EXAMPLE.rp`](docs/CELEPAR_AXURE_EXAMPLE.rp?raw=1) — opcional
 
 ---
 
@@ -109,12 +109,12 @@ Inclua:
 
 Inclua:
 
-* [`MANTIS-1234-05-casos-teste.odt`](docs/MANTIS-1234-05-casos-teste.odt)
+* [`MANTIS-1234-05-casos-teste.odt`](docs/MANTIS-1234-05-casos-teste.odt?raw=1)
 
 Se houver impacto em cálculos:
 
-* [`MANTIS-1234-01-complemento-contagem-projeto.ods`](docs/MANTIS-1234-01-complemento-contagem-projeto.ods)
-* [`MANTIS-1234-01-complemento-contagem-indicativa.ods`](docs/MANTIS-1234-01-complemento-contagem-indicativa.ods)
+* [`MANTIS-1234-01-complemento-contagem-projeto.ods`](docs/MANTIS-1234-01-complemento-contagem-projeto.ods?raw=1)
+* [`MANTIS-1234-01-complemento-contagem-indicativa.ods`](docs/MANTIS-1234-01-complemento-contagem-indicativa.ods?raw=1)
 
 ---
 
