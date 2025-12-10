@@ -143,10 +143,10 @@ D:\Documentos\HITSS\garh
                    └─ celepar
 ```
 
-### 4.2. Ajustar o Maven para aceitar repositórios HTTP (apenas uma vez)
+### 4.2. Ajustar o Maven para aceitar repositórios HTTP (apenas uma vez) (somente se for executar docker local)
 
-> Este ajuste é necessário porque o Maven, por padrão, bloqueia repositórios HTTP (não HTTPS).
-> Como o repositório interno da CELEPAR utiliza HTTP, é preciso liberar esse acesso.
+> Este ajuste não é necessário porque o Maven, por padrão, bloqueia repositórios HTTP (não HTTPS).
+> Como o repositório interno da CELEPAR utiliza HTTPS, não é preciso liberar esse acesso. Somente se for utilizar a opção 5.
 
 1. Descubra o caminho do Maven instalado:
 
