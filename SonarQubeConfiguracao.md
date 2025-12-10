@@ -143,7 +143,8 @@ D:\Documentos\HITSS\garh
                    └─ celepar
 ```
 
-### 4.2. Ajustar o Maven para aceitar repositórios HTTP (apenas uma vez) (somente se for executar docker local)
+### 4.2. Ajustar o Maven para aceitar repositórios HTTP 
+### (somente se for executar docker local)
 
 > Este ajuste não é necessário porque o Maven, por padrão, bloqueia repositórios HTTP (não HTTPS).
 > Como o repositório interno da CELEPAR utiliza HTTPS, não é preciso liberar esse acesso. Somente se for utilizar a opção 5.
@@ -184,11 +185,6 @@ D:\Documentos\HITSS\garh
 6. Feche todos os terminais abertos.
 
 7. Abra **um novo Prompt de Comando** (não use PowerShell para este passo a passo).
-
----
-
-Perfeito — segue **o trecho já corrigido diretamente sobre o seu código original**, mantendo **todas as imagens exatamente como você usou**, apenas ajustando corretamente para **PowerShell no Windows** 👇
-É só **substituir a sua seção 4.3 por esta abaixo**:
 
 ---
 
