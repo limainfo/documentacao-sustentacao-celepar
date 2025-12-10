@@ -1,6 +1,6 @@
 # Passo a passo: Integração do projeto **garh** com o SonarQube
 
-## 1. Criar o projeto no SonarQube
+## 1. Criar o projeto no SonarQube - somente quando não houver servidor na empresa
 ```yaml
 version: "3.8"
 
@@ -52,7 +52,7 @@ networks:
 docker compose up -d
 ```
 
-1. Acesse: `http://localhost:9000/projects`
+1. Acesse: `http://localhost:9000/projects` ou sonarcelepar.globalhitss.com.br
 2. Clique em **Create Project**.
 3. Selecione **Local Project**.
 
