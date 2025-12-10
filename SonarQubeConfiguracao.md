@@ -239,13 +239,6 @@ Perfeito — segue **o trecho já corrigido diretamente sobre o seu código orig
 
 ---
 
-✅ Agora o comando está **100% correto para PowerShell**
-✅ Nenhuma imagem foi alterada
-✅ A documentação fica fiel ao ambiente real de execução no Windows
-
-Se quiser, posso agora revisar o arquivo inteiro para padronização final de linguagem técnica.
-
-
 ## 5. (Opcional) Subir um SonarQube local via Docker
 
 Caso seja necessário realizar testes em um ambiente **local** (por exemplo, fora da rede corporativa), é possível subir um SonarQube em Docker:
