@@ -12,6 +12,8 @@ Todos os prints de tela estão na pasta [`images`](./images).
 
 ## 📑 Índice
 
+## 📑 Índice
+
 - [1. Acessar o SonarQube](#1-acessar-o-sonarqube)
 - [2. Criar o projeto no SonarQube](#2-criar-o-projeto-no-sonarqube)
   - [2.1. Iniciar criação de projeto](#21-iniciar-criação-de-projeto)
@@ -21,9 +23,16 @@ Todos os prints de tela estão na pasta [`images`](./images).
 - [3. Gerar o token do projeto](#3-gerar-o-token-do-projeto)
 - [4. Executar a análise com Maven](#4-executar-a-análise-com-maven)
   - [4.1. Estrutura do projeto](#41-estrutura-do-projeto)
-  - [4.2. Ajustar o Maven para aceitar repositórios HTTP](#42-ajustar-o-maven-para-aceitar-repositórios-http-apenas-uma-vez)
+  - [4.2. Ajustar o Maven para aceitar repositórios HTTP](#42-ajustar-o-maven-para-aceitar-repositórios-http)
   - [4.3. Executar o comando Maven](#43-executar-o-comando-maven)
-- [5. (Opcional) Subir um SonarQube local via Docker](#5-opcional-subir-um-sonarqube-local-via-docker)
+- [5. Maven Toolchains – projetos com versões de java inferiores a 55.0 (Java 11)](#5-maven-toolchains---projetos-com-versões-de-java-inferiores-a-550-java-11)
+  - [5.1. Volte o Maven para Java 21 (ou 17)](#51-volte-o-maven-para-java-21-ou-17)
+  - [5.2. Configure o Toolchain para forçar o javac 1.8 só na compilação](#52-configure-o-toolchain-para-forçar-o-javac-18-só-na-compilação)
+    - [5.2.1. Criar toolchains.xml](#521-crie-cusersuserm2toolchainsxml)
+    - [5.2.2. Ajustar o pom.xml](#522-no-pomxml-do-projetopai-adicione)
+  - [5.3. Rodar o Sonar normalmente (com Java 21)](#53-rode-o-sonar-normalmente-com-java-21)
+- [6. (Opcional) Subir um SonarQube local via Docker](#6-opcional-subir-um-sonarqube-local-via-docker)
+
 
 ---
 
@@ -233,9 +242,91 @@ D:\Documentos\HITSS\garh
 
    ![Resultado da análise no SonarQube](images/14-resultado-analise.png)
 
+
+---
+## 5. **Maven Toolchains** - projetos com versões de java inferiores a 55.0 (Java 11).
+### 5.1) Volte o Maven para Java 21 (ou 17)
+
+```powershell
+$env:JAVA_HOME = "C:\Program Files\Java\jdk-21"
+$env:Path = "$env:JAVA_HOME\bin;$env:Path"
+
+mvn -v
+```
+
+Tem que mostrar Java 21.
+
 ---
 
-## 5. (Opcional) Subir um SonarQube local via Docker
+### 5.2) Configure o Toolchain para forçar o **javac 1.8** só na compilação
+
+#### 5.2.1 Crie: `C:\Users\User\.m2\toolchains.xml`
+
+(ajuste o caminho real do seu JDK 8)
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<toolchains>
+  <toolchain>
+    <type>jdk</type>
+    <provides>
+      <version>1.8</version>
+    </provides>
+    <configuration>
+      <jdkHome>C:\Program Files\Java\jdk-1.8</jdkHome>
+    </configuration>
+  </toolchain>
+</toolchains>
+```
+
+#### 5.2.2 No `pom.xml` (do projeto/pai), adicione:
+
+```xml
+<build>
+  <plugins>
+    <plugin>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-toolchains-plugin</artifactId>
+      <version>3.1.0</version>
+      <executions>
+        <execution>
+          <goals>
+            <goal>toolchain</goal>
+          </goals>
+        </execution>
+      </executions>
+      <configuration>
+        <toolchains>
+          <jdk>
+            <version>1.8</version>
+          </jdk>
+        </toolchains>
+      </configuration>
+    </plugin>
+  </plugins>
+</build>
+```
+
+---
+
+### 5.3) Rode o Sonar normalmente (com Java 21)
+
+```powershell
+mvn clean verify sonar:sonar `
+  -Dsonar.projectKey=br.gov.pr.celepar:src `
+  -Dsonar.projectName=src `
+  -Dsonar.host.url=https://sonarcelepar.globalhitss.com.br `
+  -Dsonar.token=TOKEN
+```
+
+✅ Assim:
+
+* O **SonarQubeMojo** roda em Java 21 (não dá UnsupportedClassVersionError)
+* O **compile** usa JDK 8 via toolchain (não dá `javax.jws does not exist`)
+
+---
+
+## 6. (Opcional) Subir um SonarQube local via Docker
 
 Caso seja necessário realizar testes em um ambiente **local** (por exemplo, fora da rede corporativa), é possível subir um SonarQube em Docker:
 
