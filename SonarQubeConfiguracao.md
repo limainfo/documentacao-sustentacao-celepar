@@ -12,8 +12,6 @@ Todos os prints de tela estão na pasta [`images`](./images).
 
 ## 📑 Índice
 
-## 📑 Índice
-
 - [1. Acessar o SonarQube](#1-acessar-o-sonarqube)
 - [2. Criar o projeto no SonarQube](#2-criar-o-projeto-no-sonarqube)
   - [2.1. Iniciar criação de projeto](#21-iniciar-criação-de-projeto)
