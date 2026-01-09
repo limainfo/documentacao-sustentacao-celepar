@@ -210,14 +210,19 @@ D:\Documentos\HITSS\garh
    cd D:\Documentos\HITSS\garh
    ```
 
-2. Utilize o comando Maven sugerido pelo próprio SonarQube, ajustando o token e a URL do servidor conforme o ambiente corporativo:
+2. Utilize o comando Maven sugerido pelo próprio SonarQube, ajustando o token e a URL do servidor conforme o ambiente corporativo. **Lembrando que o sonar não roda no JAVA 11, por isso a necessidade de modificação do JAVA_HOME temporariamente no SHELL**:
 
-   ```powershell
-   mvn clean verify sonar:sonar `
-     -Dsonar.projectKey=br.gov.pr.celepar:garh `
-     -Dsonar.projectName=garh `
-     -Dsonar.host.url=https://sonarcelepar.globalhitss.com.br `
-     -Dsonar.token=sqp_SEU_TOKEN_AQUI
+```powershell
+$env:JAVA_HOME = "C:\Program Files\Java\jdk-21"
+$env:Path = "$env:JAVA_HOME\bin;$env:Path"
+
+mvn clean verify sonar:sonar `
+  "-Dsonar.projectKey=br.gov.pr.celepar:garh" `
+  "-Dsonar.projectName=garh" `
+  "-Dsonar.host.url=https://sonarcelepar.globalhitss.com.br" `
+  "-Dsonar.token=sqp_SEU_TOKEN_AQUI" `
+  "-Dsonar.scanner.force-deprecated-java-version=true"
+
    ```
 
    ![Comando Maven sendo executado](images/11-comando-maven.png)
