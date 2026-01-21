@@ -392,7 +392,15 @@ Nesse caso, ajuste o comando Maven para apontar para o SonarQube local:
 ```cmd
 -Dsonar.host.url=http://localhost:9000
 ```
+## 7. Usuário admin com senha admin default
 
+```sql
+select * from users;
+                 uuid                 | login |     name      | email |                                        crypted_password                                         |             salt             | hash_method | active | external_login | external_identity_provider | external_id | user_local | homepage_type | homepage_parameter | last_connection_date |  created_at   |  updated_at   | reset_password | last_sonarlint_connection
+--------------------------------------+-------+---------------+-------+-------------------------------------------------------------------------------------------------+------------------------------+-------------+--------+----------------+----------------------------+-------------+------------+---------------+--------------------+----------------------+---------------+---------------+----------------+---------------------------
+ e1903282-5521-4f9c-917a-715ecba2efd6 | admin | Administrator |       | 100000$R9xDN18ebKxA3ZTaputi6wDt+fcKhP2h3GgAjGbcBlCSlkMLENxw9wziHS46QIW3fWOjEMpeyEts+pNuPXSbYA== | pSDhsn3IM3KCa74CRRf7T7Vx+OE= | PBKDF2      | t      | admin          | sonarqube                  | admin       | t          |               |                    |        1769031800136 | 1769031583842 | 1769031800136 | t              |
+(1 row)
+```
 ---
 
 Com isso, o projeto **garh** estará integrado ao SonarQube, permitindo o acompanhamento contínuo de qualidade de código, bugs, vulnerabilidades e code smells.
