@@ -55,8 +55,54 @@ Todos os prints de tela estão na pasta [`images`](./images).
 ### 2.1. Iniciar criação de projeto
 
 1. Após o login, acesse o menu **Projects**.
-2. Clique em **Create Project**.
-3. Na tela **How do you want to create your project?**, escolha **Create a local project**.
+2. Cenário (sem integração com GitLab/CSV por restrição de credenciais):
+---
+Como não há integração com repositório (GitLab/CSV), o uso do Sonar fica mais **manual e descentralizado**, então a estratégia precisa se adaptar.
+>
+> **1. Novo sistema/projeto**
+> Continua valendo: **cria um novo projeto no Sonar**, porque a análise é por código base.
+>
+> **2. Sem integração com repositório**
+> Como o Sonar não está ligado ao Git, ele perde alguns recursos importantes (branch analysis, PR decoration, autoria automática).
+> Então, na prática:
+>
+> * cada análise é um “snapshot” do código naquele momento
+> * não existe controle confiável de branch dentro do Sonar
+>
+> **3. Execução local (principal ponto de atenção)**
+> Aqui vira o ponto crítico:
+>
+> * cada dev pode rodar em estados diferentes do código
+> * isso gera **issues inconsistentes entre execuções**
+>
+> 👉 Por isso, o ideal é alinhar um padrão:
+>
+> * sempre rodar com base em uma branch comum (ex: develop atualizada)
+> * evitar rodar análise em código desatualizado
+>
+> **4. Projeto por desenvolvedor (nesse cenário específico)**
+> Diferente do cenário ideal, aqui **pode fazer sentido sim** criar projetos separados por dev ou por contexto (ex: `sistema-x-dev-fulano`), porque:
+>
+> * evita sobrescrever análise dos outros
+> * dá autonomia sem conflito
+>
+> Mas isso deve ser **combinado com o time**, senão vira desorganização.
+>
+> **5. Limitação importante**
+> Sem integração, o Sonar vira mais uma ferramenta de **análise pontual de qualidade**, e não de governança contínua.
+> Ou seja: serve para apoiar, mas não substitui uma esteira CI/CD com análise centralizada.
+>
+> ---
+>
+> **Resumo prático nesse cenário:**
+>
+> * novo sistema → novo projeto
+> * sem integração → análise manual (cuidado com consistência)
+> * pode usar projeto por dev **se houver conflito de uso**
+> * ideal é padronizar branch/base antes de rodar análise
+
+3. Clique em **Create Project**.
+4. Na tela **How do you want to create your project?**, escolha **Create a local project**.
 
    ![Criar um projeto local](images/02-criar-projeto-local.png)
 
