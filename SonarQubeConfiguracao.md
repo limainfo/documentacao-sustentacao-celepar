@@ -21,7 +21,7 @@ Todos os prints de tela estão na pasta [`images`](./images).
 - [3. Gerar o token do projeto](#3-gerar-o-token-do-projeto)
 - [4. Executar a análise com Maven](#4-executar-a-análise-com-maven)
   - [4.1. Estrutura do projeto](#41-estrutura-do-projeto)
-  - [4.2. Ajustar o Maven para aceitar repositórios HTTP](#42-ajustar-o-maven-para-aceitar-repositórios-http)
+  - [4.2. Ajustar o Maven para aceitar repositórios HTTPS](#42-ajustar-o-maven-para-aceitar-repositórios-https)
   - [4.3. Executar o comando Maven](#43-executar-o-comando-maven)
 - [5. Maven Toolchains – projetos com versões de java inferiores a 55.0 (Java 11)](#5-maven-toolchains---projetos-com-versões-de-java-inferiores-a-550-java-11)
   - [5.1. Volte o Maven para Java 21 (ou 17)](#51-volte-o-maven-para-java-21-ou-17)
@@ -196,7 +196,7 @@ D:\Documentos\HITSS\garh
                    └─ celepar
 ```
 
-### 4.2. Ajustar o Maven para aceitar repositórios HTTP 
+### 4.2. Ajustar o Maven para aceitar repositórios HTTPS 
 ### (somente se for executar docker local)
 
 > Este ajuste não é necessário porque o Maven, por padrão, bloqueia repositórios HTTP (não HTTPS).
@@ -235,9 +235,91 @@ D:\Documentos\HITSS\garh
 
 5. Salve o arquivo.
 
-6. Feche todos os terminais abertos.
+6. Abra o arquivo de configuração settings.xml do Maven:
 
-7. Abra **um novo Prompt de Comando** (não use PowerShell para este passo a passo).
+   ```text
+   $env:USERPROFILE\.m2\settings.xml
+   ```
+
+7. Insira o conteúdo a seguir:
+
+Use este `settings.xml` mais limpo. Ele força Maven, plugins e dependências a passarem pelo Nexus CELEPAR.
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 https://maven.apache.org/xsd/settings-1.0.0.xsd">
+
+  <localRepository>C:/Users/User/.m2/repository</localRepository>
+
+  <mirrors>
+    <mirror>
+      <id>celepar-nexus</id>
+      <name>CELEPAR Nexus</name>
+      <url>https://repositorios.celepar.parana/repository/maven/</url>
+      <mirrorOf>*</mirrorOf>
+    </mirror>
+  </mirrors>
+
+</settings>
+```
+
+8. O Maven está usando **JDK 21**, não JDK 8:
+
+```text
+Java version: 21.0.9
+runtime: C:\Program Files\Java\jdk-21
+```
+
+Então o certificado precisa ir para:
+
+```text
+C:\Program Files\Java\jdk-21\lib\security\cacerts
+```
+
+9. Abra o PowerShell como **Administrador**.
+
+10. Gere o certificado novamente
+
+```powershell
+& "C:\Program Files\Java\jdk-21\bin\keytool.exe" `
+  -printcert `
+  -sslserver repositorios.celepar.parana:443 `
+  -rfc | Out-File -Encoding ascii C:\temp\celepar-nexus.cer
+```
+
+Confirme se o arquivo começa assim:
+
+```powershell
+Get-Content C:\temp\celepar-nexus.cer -TotalCount 2
+```
+
+Tem que aparecer algo parecido com:
+
+```text
+-----BEGIN CERTIFICATE-----
+MI...
+```
+
+11. Importe no JDK 21
+
+```powershell
+& "C:\Program Files\Java\jdk-21\bin\keytool.exe" `
+  -importcert `
+  -trustcacerts `
+  -noprompt `
+  -alias celepar-nexus `
+  -file C:\temp\celepar-nexus.cer `
+  -keystore "C:\Program Files\Java\jdk-21\lib\security\cacerts" `
+  -storepass changeit
+```
+
+
+
+12. Feche todos os terminais abertos.
+    
+13. Abra **um novo Prompt de Comando** (não use PowerShell para este passo a passo).
 
 ---
 
