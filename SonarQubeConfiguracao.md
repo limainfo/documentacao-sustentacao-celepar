@@ -249,20 +249,52 @@ Use este `settings.xml` mais limpo. Ele força Maven, plugins e dependências a 
 <?xml version="1.0" encoding="UTF-8"?>
 <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 https://maven.apache.org/xsd/settings-1.0.0.xsd">
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+  <localRepository>C:\Users\User\.m2\repository</localRepository>
+  <profiles>
+    <!-- Perfil padrão que você já tinha -->
+    <profile>
+      <id>nexus</id>
+      <repositories>
+        <repository>
+          <id>central</id>
+          <url>https://repositorios.celepar.parana/repository/maven/</url>
+          <releases>
+            <enabled>true</enabled>
+          </releases>
+          <snapshots>
+            <enabled>true</enabled>
+          </snapshots>
+        </repository>
+      </repositories>
+    </profile>
 
-  <localRepository>C:/Users/User/.m2/repository</localRepository>
+    <!-- NOVO perfil: sobrescreve o repositório apache-ws-snapshots2
+         apontando para o mesmo Nexus -->
+    <profile>
+      <id>override-apache-ws</id>
+      <repositories>
+        <repository>
+          <id>apache-ws-snapshots2</id>
+          <url>https://repositorios.celepar.parana/repository/maven/</url>
+          <releases>
+            <enabled>true</enabled>
+          </releases>
+          <snapshots>
+            <enabled>true</enabled>
+          </snapshots>
+        </repository>
+      </repositories>
+    </profile>
 
-  <mirrors>
-    <mirror>
-      <id>celepar-nexus</id>
-      <name>CELEPAR Nexus</name>
-      <url>https://repositorios.celepar.parana/repository/maven/</url>
-      <mirrorOf>*</mirrorOf>
-    </mirror>
-  </mirrors>
+  </profiles>
 
+  <activeProfiles>
+    <activeProfile>override-apache-ws</activeProfile>
+    <activeProfile>nexus</activeProfile>
+  </activeProfiles>
 </settings>
+
 ```
 
 8. O Maven está usando **JDK 21**, não JDK 8:
