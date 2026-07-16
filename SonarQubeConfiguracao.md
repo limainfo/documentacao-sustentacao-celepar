@@ -110,9 +110,9 @@ Como não há integração com repositório (GitLab/CSV), o uso do Sonar fica ma
 
 Na tela **Create a local project** (1 de 2), preencha:
 
-* **Project display name***: `garh`
+* **Project display name***: `garh` 
 * **Project key***: `br.gov.pr.celepar:garh`
-* **Main branch name***: `master`
+* **Main branch name***: `master`  <-- dependendo do projeto, pode ser develop
 
 ![Dados do projeto](images/03-dados-do-projeto.png)
 
