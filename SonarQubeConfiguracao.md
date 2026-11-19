@@ -196,11 +196,11 @@ D:\Documentos\HITSS\garh
                    └─ celepar
 ```
 
-### 4.2. Ajustar o Maven para aceitar repositórios HTTPS 
+### 4.2. Ajustar o Maven para aceitar repositórios HTTP (inseguros) 
 ### (somente se for executar docker local)
 
 > Este ajuste não é necessário porque o Maven, por padrão, bloqueia repositórios HTTP (não HTTPS).
-> Como o repositório interno da CELEPAR utiliza HTTPS, não é preciso liberar esse acesso. Somente se for utilizar a opção 5.
+> Como o repositório interno da CELEPAR utiliza HTTPS, não é preciso liberar esse acesso. Somente se for utilizar a opção 6.
 
 1. Descubra o caminho do Maven instalado:
 
@@ -351,7 +351,7 @@ MI...
 
 12. Feche todos os terminais abertos.
     
-13. Abra **um novo Prompt de Comando** (não use PowerShell para este passo a passo).
+13. Abra **um novo terminal PowerShell** (não use PowerShell para este passo a passo).
 
 ---
 
@@ -423,7 +423,7 @@ Tem que mostrar Java 21.
 
 ### 5.2) Configure o Toolchain para forçar o **javac 1.8** só na compilação
 
-#### 5.2.1 Crie: `C:\Users\User\.m2\toolchains.xml`
+#### 5.2.1 Crie: `$env:USERPROFILE\.m2\toolchains.xml ou %USERPROFILE%\.m2\toolchains.xml`
 
 (ajuste o caminho real do seu JDK 8)
 
